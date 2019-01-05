@@ -1,0 +1,9 @@
+*.iml
+/lib/*
+.idea/*
+.clover/*
+*/target/*
+*/logs/*
+**/target/*
+
+**/pom.xml.versionsBackup
