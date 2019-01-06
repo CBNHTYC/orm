@@ -1,18 +1,20 @@
-package orm.entity;
+package ru.kubsu.orm.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "speakers")
 public class Speaker {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "speaker_id")
     private Long speakerID;
 
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "speaker", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Talk> talks;
 
     public Speaker(){
@@ -38,7 +40,7 @@ public class Speaker {
 
     @Override
     public String toString(){
-        return "Speacer{" +
+        return "Speaker{" +
                 "name='" + name + '\'' +
                 "}";
     }
